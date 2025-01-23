@@ -40,5 +40,8 @@ export class HomePage {
       item.confirm = !item.confirm;
     }
   }
+  removeItem(id: number): void {
+    this.items = this.items.filter(item => item.id !== id);
+  }
 
 }

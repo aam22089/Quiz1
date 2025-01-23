@@ -38,6 +38,7 @@
         <th>Ubicación</th>
         <th>Datos del Organizador</th>
         <th>Confirmar</th>
+        <th>Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -49,6 +50,9 @@
         <td>Nombre: {{item.orgname}} <br> Telefono: {{item.orgphone}}</td>
         <td>
           <input type="checkbox" [checked]="item.confirm" (change)="toggleConfirm(item.id)">
+        </td>
+        <td>
+          <button (click)="removeItem(item.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
