@@ -7,14 +7,50 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2>Eventos</h2>
+  <label>Nombre del Evento: </label>
+  <input #nameInput type="text" placeholder="Nombre" class="in">
+  <br>
+  <label>Fecha de Inicio: </label>
+  <input #dateiInput type="date" class="in">
+  <br>
+  <label>Fecha de Fin: </label>
+  <input #datefInput type="date" class="in">
+  <br>
+  <label>Ubicación: </label>
+  <input #locationInput type="text" placeholder="" class="in">
+  <br>
+  <label>Nombre del Organizador</label>
+  <input #orgnameInput type="text" class="in">
+  <br>
+  <label>Telefono del Organizador</label>
+  <input #orgphoneInput type="tel" class="in">
+  <br>
+  <button
+    (click)="addItem(nameInput.value, dateiInput.value, datefInput.value, orgnameInput.value, orgphoneInput.value, locationInput.value)">Agregar</button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <table border="1" style="margin-top: 20px; width: 70%; text-align: left;">
+    <thead>
+      <tr>
+        <th> ID </th>
+        <th>Evento</th>
+        <th>Fecha</th>
+        <th>Ubicación</th>
+        <th>Datos del Organizador</th>
+        <th>Confirmar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.datei}}--{{item.datef}}</td>
+        <td>{{item.location}}</td>
+        <td>Nombre: {{item.orgname}} <br> Telefono: {{item.orgphone}}</td>
+        <td>
+          <input type="checkbox" [checked]="item.confirm" (change)="toggleConfirm(item.id)">
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ion-content>
